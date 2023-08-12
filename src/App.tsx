@@ -1,10 +1,10 @@
 import React from 'react'
 import classNames from 'classnames'
-import { generateId, randomChoice, shuffle, delay } from './utils'
+import { generateId, randomChoice, shuffle, pause } from './utils'
 import emojis from './emojis'
 import { NUMBER_OF_PAIRS, TRANSITION_TIME } from './constants'
 import { Card } from './components/Card'
-import { FlipCounter } from './components/FlipCounter'
+import { FlipsCounter } from './components/FlipCounter'
 import { GameOver } from './components/GameOver'
 
 import type { ICard } from './components/Card'
@@ -20,6 +20,8 @@ export function App() {
   const chooseCard = async (currentCard: ICard) => {
     // click to current open card
     if (facedUpCard && facedUpCard.id === currentCard.id) return
+
+    setFlipsCount(flipsCount + 1)
 
     // first time open card
     if (!facedUpCard) {
@@ -41,7 +43,7 @@ export function App() {
         return card
       }))
 
-      await delay(TRANSITION_TIME)
+      await pause(TRANSITION_TIME)
 
       setCards(cards.map(card => {
         if (card.id === facedUpCard.id) return { ...card, isMatched: true }
@@ -66,9 +68,17 @@ export function App() {
         return card
       }))
 
-      await delay(TRANSITION_TIME)
+      await pause(TRANSITION_TIME)
 
-      setCards(cards.map(card => ({ ...card, isFaceUp: false })))
+      setCards(cards.map(card => {
+        if (card.id === facedUpCard.id) return { ...card, isFailure: true }
+        if (card.id === currentCard.id) return { ...card, isFaceUp: true, isFailure: true }
+        return card
+      }))
+
+      await pause(TRANSITION_TIME)
+
+      setCards(cards.map(card => ({ ...card, isFaceUp: false, isFailure: false })))
       setLock(false)
     }
   }
@@ -80,7 +90,8 @@ export function App() {
       const newCard: Omit<ICard, 'id'> = {
         emoji: randomChoice(emojis),
         isFaceUp: false,
-        isMatched: false
+        isMatched: false,
+        isFailure: false
       }
       tempCards = [...tempCards, { ...newCard, id: generateId() }, { ...newCard, id: generateId() }]
     })
@@ -89,7 +100,6 @@ export function App() {
   }
 
   const handleCardClick = (card: ICard) => () => {
-    setFlipsCount(flipsCount + 1)
     chooseCard(card)
   }
 
@@ -102,24 +112,22 @@ export function App() {
   React.useEffect(createCards, [])
 
   return (
-    <>
-      <div className='min-h-screen py-5'>
-        <FlipCounter count={flipsCount} />
-
-        <div className={classNames('container grid grid-cols-3 gap-4', {
-          'pointer-events-none': isLocked
-        })}>
-          {cards.map(card => (
-            <Card
-              key={card.id}
-              {...card}
-              onClick={handleCardClick(card)}
-            />
-          ))}
-        </div>
-      </div>
+    <div className='flex flex-col items-center justify-center gap-5 min-h-screen py-6'>
+      <FlipsCounter count={flipsCount} />
 
       {isGameOver && <GameOver onClick={handlePlayAgain} />}
-    </>
+
+      <div className={classNames('grid grid-cols-3 lg:grid-cols-4 gap-6', {
+        'pointer-events-none': isLocked
+      })}>
+        {cards.map(card => (
+          <Card
+            key={card.id}
+            {...card}
+            onClick={handleCardClick(card)}
+          />
+        ))}
+      </div>
+    </div>
   )
 }
