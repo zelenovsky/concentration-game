@@ -25,7 +25,7 @@ export const Card = React.memo(({ emoji, isMatched, isFaceUp, isFailure, onClick
       onClick={onClick}
     >
       <div
-        className={classNames(`absolute inset-0 z-10 flex items-center justify-center text-6xl bg-gray-300 border-2 border-gray-700 rounded-lg transition-transform duration-300 -rotate-y-180 backface-hidden`, {
+        className={classNames(`absolute inset-0 z-10 flex items-center justify-center text-6xl bg-gray-300 border-2 border-gray-400 rounded-lg transition-transform duration-300 -rotate-y-180 backface-hidden`, {
           '-rotate-y-360': isMatched || isFaceUp
         })}
       >
@@ -33,7 +33,7 @@ export const Card = React.memo(({ emoji, isMatched, isFaceUp, isFailure, onClick
       </div>
 
       <div
-        className={classNames(`absolute inset-0 z-0 bg-gray-300 border-2 border-gray-700 rounded-lg transition-transform duration-300`, {
+        className={classNames(`absolute inset-0 z-0 bg-gray-300 border-2 border-gray-400 rounded-lg transition-transform duration-300`, {
           '-rotate-y-180': isMatched || isFaceUp
         })}
       />
