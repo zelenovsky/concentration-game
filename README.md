@@ -1,27 +1,27 @@
-# React + TypeScript + Vite
+# Игра на концентрацию
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Небольшая тренировочная игра на React и Tailwind, которую я написал для моих менти. Делюсь со всеми кому тоже интересно.
 
-Currently, two official plugins are available:
+![Concentration game](./public/concentration-game.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Уровень сложности senior
 
-## Expanding the ESLint configuration
+В этой ветке нужно будет написать игру с нуля. Удачи!
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+Чтобы выбрать другой уровень сложности выбери соответствующую ветку: `junior` или `middle`. Для того, чтобы посмотреть готовый результат перейди на ветку `result`.
 
-- Configure the top-level `parserOptions` property like this:
+## Требования
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- клик по открытой карточке не должен засчитываться счетчиком
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- после перезагрузки страницы или при клике на кнопку 'Играть снова' эмоджи должны быть перемешаны в другом порядке
+
+- я должен иметь возможность регулировать количество карточек. Например, через константу или отобразить сразу в UI в виде инпута.
+
+## Инструкция
+
+1. Клонируем репозиторий
+2. `npm install` для установки зависимостей
+3. `npm run dev` для запуска сервера по адресу `localhost:3000`
+4. Разрабатываем
+5. Делимся результатами в моем тг канале 😉
