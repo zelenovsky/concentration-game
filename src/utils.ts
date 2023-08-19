@@ -23,7 +23,7 @@ export const shuffle = <T>(arr: T[]): T[] => {
   return a
 }
 
-export const delay = (ms: number) => {
+export const pause = (ms: number) => {
   return new Promise((resolve) => {
     setTimeout(resolve, ms)
   })
