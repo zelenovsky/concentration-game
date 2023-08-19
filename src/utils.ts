@@ -1,13 +1,3 @@
-const idsFactory = (): () => number => {
-  let count = 0
-  return () => {
-    count += 1
-    return count
-  }
-}
-
-export const generateId = idsFactory()
-
 export const randomChoice = (choices: string[]): string => {
   const rand = Math.random() * choices.length
   const indexToRemove = Math.floor(rand)
@@ -21,10 +11,4 @@ export const shuffle = <T>(arr: T[]): T[] => {
     [a[i - 1], a[j]] = [a[j], a[i - 1]]
   }
   return a
-}
-
-export const pause = (ms: number) => {
-  return new Promise((resolve) => {
-    setTimeout(resolve, ms)
-  })
 }

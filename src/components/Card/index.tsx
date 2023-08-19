@@ -13,7 +13,6 @@ export const Card = React.memo(({ emoji, onClick }: IProps) => {
   return (
     <button
       type='button'
-      className='relative block w-52 h-60 transition-opacity duration-300 perspective'
       onClick={onClick}
     >
       {emoji}
