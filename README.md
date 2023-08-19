@@ -1,27 +1,34 @@
-# React + TypeScript + Vite
+# Игра на концентрацию
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Небольшая тренировочная игра на React и Tailwind, которую я написал для моих менти. Делюсь со всеми кому тоже интересно.
 
-Currently, two official plugins are available:
+![Concentration game](./images/concentration-game.gif)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Уровни сложности
 
-## Expanding the ESLint configuration
+В зависимости от своего уровня ты можешь выбрать момент откуда начинать разрабатывать приложение.
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Ветка `junior`. Если ты новичок, то начни отсюда. Здесь базово написана игра и стилизация. Тебе нужно будет написать логику выбора карточек — метод `chooseCard`.
 
-- Configure the top-level `parserOptions` property like this:
+- Ветка `middle`. Здесь нужно будет написать больше кода и стилизацию, но оставлены хелперы для упрощения жизни.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Ветка `senior`. Тут нужно будет написать все с нуля.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+- Ветка `result`. Полностью реализованное приложение. Здесь ты можешь свериться с тем как реализовал приложение я или если застопорился на каком-то моменте.
+
+## Требования
+
+- клик по открытой карточке не должен засчитываться счетчиком
+
+- после перезагрузки страницы или при клике на кнопку 'Играть снова' эмоджи должны быть перемешаны в другом порядке
+
+- я должен иметь возможность регулировать количество карточек. Например, через константу или отобразить сразу в UI в виде инпута.
+
+## Инструкция
+
+1. Клонируем репозиторий
+2. Переходим в выбранную ветку
+3. `npm install` для установки зависимостей
+4. `npm run dev` для запуска сервера по адресу `localhost:3000`
+5. Разрабатываем
+6. Делимся результатами в моем тг канале 😉
