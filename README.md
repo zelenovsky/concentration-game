@@ -2,7 +2,7 @@
 
 Небольшая тренировочная игра на React и Tailwind, которую я написал для моих менти. Делюсь со всеми кому тоже интересно.
 
-![Concentration game](./images/concentration-game.gif)
+![Concentration game](./public/concentration-game.gif)
 
 ## Уровень сложности junior
 
